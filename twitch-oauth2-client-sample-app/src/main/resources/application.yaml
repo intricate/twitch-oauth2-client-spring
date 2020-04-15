@@ -1,0 +1,21 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          twitch:
+            authorization-uri: https://id.twitch.tv/oauth2/authorize
+            token-uri: https://id.twitch.tv/oauth2/token
+            user-info-uri: https://id.twitch.tv/oauth2/userinfo
+            user-name-attribute: preferred_username
+        registration:
+          twitch:
+            client-id: twitch-client-id
+            client-secret: twitch-client-secret
+            client-authentication-method: post
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            provider: twitch
+            authorization-grant-type: authorization_code
+            scope:
+              - "user:read:email"
+              - "user:read:broadcast"
